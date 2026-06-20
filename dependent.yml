@@ -1,0 +1,9 @@
+# Upstream dependency manifest for common-actions
+# Tracks all upstream actions and their pinned versions
+
+version: 1
+
+actions:
+  checkout:
+    upstream: actions/checkout
+    ref: v7.0.0
