@@ -8,7 +8,7 @@ inputs:
     default: 24
   cache:
     description: 'Used to specify a package manager for caching. Supported values: npm, yarn, pnpm.'
-    defualt: 'pnpm'
+    default: 'pnpm'
 
 outputs:
   cache-hit:
