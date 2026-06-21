@@ -8,17 +8,14 @@ actions:
     ref: v7.0.0
 
   # setup
-  setup-node:
-    upstream: actions/setup-node
-    ref: v6.4.0
+  setup-nodejs:
+    upstream:
+      - pnpm/action-setup@v6.0.9
+      - actions/setup-node@v6.4.0
 
   setup-go:
     upstream: actions/setup-go
     ref: v6.4.0
-
-  setup-pnpm:
-    upstream: pnpm/action-setup
-    ref: v6.0.9
 
   setup-uv:
     upstream: astral-sh/setup-uv

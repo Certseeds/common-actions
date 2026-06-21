@@ -1,0 +1,28 @@
+name: 'Setup Node.js'
+description: 'Setup pnpm and Node.js (combined forwarding proxy)'
+author: 'common-actions'
+
+outputs:
+  cache-hit:
+    description: 'A boolean value to indicate if a cache was hit.'
+    value: ${{ steps.setup-node.outputs.cache-hit }}
+  node-version:
+    description: 'The installed node version.'
+    value: ${{ steps.setup-node.outputs.node-version }}
+
+runs:
+  using: 'composite'
+  steps:
+    - uses: pnpm/action-setup@v6.0.9
+      with:
+        version: 10
+        run_install: false
+    - id: setup-node
+      uses: actions/setup-node@v6.4.0
+      with:
+        node-version: 24
+        cache: 'pnpm'
+
+branding:
+  icon: 'package'
+  color: 'green'
