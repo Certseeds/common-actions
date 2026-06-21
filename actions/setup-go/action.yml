@@ -8,6 +8,8 @@ inputs:
   cache:
     description: 'Whether caching is needed.'
     default: 'true'
+  cache-dependency-path:
+    description: 'Path to a dependency file (e.g., go.mod, go.sum)'
 
 outputs:
   go-version:
@@ -25,6 +27,7 @@ runs:
       with:
         go-version: ${{ inputs.go-version }}
         cache: ${{ inputs.cache }}
+        cache-dependency-path: ${{ inputs.cache-dependency-path }}
 
 branding:
   icon: 'package'
