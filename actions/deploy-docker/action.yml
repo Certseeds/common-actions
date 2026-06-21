@@ -1,0 +1,31 @@
+name: 'Deploy Docker'
+description: 'Build and push Docker images (forwarding proxy)'
+author: 'common-actions'
+
+inputs:
+  context:
+    description: "Build's context"
+  file:
+    description: 'Path to the Dockerfile'
+  push:
+    description: 'Whether to push the image'
+  tags:
+    description: 'List of tags'
+  provenance:
+    description: 'Generate provenance attestation'
+
+runs:
+  using: 'composite'
+  steps:
+    - id: deploy
+      uses: docker/build-push-action@v7.2.0
+      with:
+        context: ${{ inputs.context }}
+        file: ${{ inputs.file }}
+        push: ${{ inputs.push }}
+        tags: ${{ inputs.tags }}
+        provenance: ${{ inputs.provenance }}
+
+branding:
+  icon: 'upload-cloud'
+  color: 'blue'

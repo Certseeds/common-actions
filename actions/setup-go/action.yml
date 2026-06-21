@@ -1,0 +1,31 @@
+name: 'Setup Go'
+description: 'Setup a Go environment (forwarding proxy)'
+author: 'common-actions'
+
+inputs:
+  go-version:
+    description: 'The Go version to download and use. Supports semver spec and ranges.'
+  cache:
+    description: 'Whether caching is needed.'
+    default: 'true'
+
+outputs:
+  go-version:
+    description: 'The installed Go version.'
+    value: ${{ steps.setup.outputs.go-version }}
+  cache-hit:
+    description: 'A boolean value to indicate if a cache was hit.'
+    value: ${{ steps.setup.outputs.cache-hit }}
+
+runs:
+  using: 'composite'
+  steps:
+    - id: setup
+      uses: actions/setup-go@v6.4.0
+      with:
+        go-version: ${{ inputs.go-version }}
+        cache: ${{ inputs.cache }}
+
+branding:
+  icon: 'package'
+  color: 'blue'

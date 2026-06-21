@@ -1,0 +1,25 @@
+name: 'Docker Login'
+description: 'Log in to a Docker registry (forwarding proxy)'
+author: 'common-actions'
+
+inputs:
+  registry:
+    description: 'Server address of Docker registry.'
+  username:
+    description: 'Username used to log against the Docker registry.'
+  password:
+    description: 'Password or personal access token used to log against the Docker registry.'
+
+runs:
+  using: 'composite'
+  steps:
+    - id: login
+      uses: docker/login-action@v4.2.0
+      with:
+        registry: ${{ inputs.registry }}
+        username: ${{ inputs.username }}
+        password: ${{ inputs.password }}
+
+branding:
+  icon: 'log-in'
+  color: 'blue'

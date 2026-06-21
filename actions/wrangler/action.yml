@@ -1,0 +1,25 @@
+name: 'Cloudflare Wrangler'
+description: 'Deploy to Cloudflare Workers/Pages using Wrangler (forwarding proxy)'
+author: 'common-actions'
+
+inputs:
+  apiToken:
+    description: 'Cloudflare API Token'
+  accountId:
+    description: 'Cloudflare Account ID'
+  command:
+    description: 'Wrangler command to execute'
+
+runs:
+  using: 'composite'
+  steps:
+    - id: deploy
+      uses: cloudflare/wrangler-action@v4.0.0
+      with:
+        apiToken: ${{ inputs.apiToken }}
+        accountId: ${{ inputs.accountId }}
+        command: ${{ inputs.command }}
+
+branding:
+  icon: 'upload-cloud'
+  color: 'orange'

@@ -1,0 +1,19 @@
+name: 'Deploy to npm'
+description: 'Publish to npm registry (forwarding proxy)'
+author: 'common-actions'
+
+inputs:
+  token:
+    description: 'npm authentication token'
+
+runs:
+  using: 'composite'
+  steps:
+    - id: publish
+      uses: JS-DevTools/npm-publish@v4.1.5
+      with:
+        token: ${{ inputs.token }}
+
+branding:
+  icon: 'upload-cloud'
+  color: 'red'

@@ -1,0 +1,28 @@
+name: 'Setup uv'
+description: 'Set up your GitHub Actions workflow with a specific version of uv (forwarding proxy)'
+author: 'common-actions'
+
+inputs:
+  enable-cache:
+    description: 'Enable uploading of the uv cache'
+    default: 'auto'
+
+outputs:
+  uv-version:
+    description: 'The installed uv version.'
+    value: ${{ steps.setup.outputs.uv-version }}
+  cache-hit:
+    description: 'A boolean value to indicate a cache entry was found.'
+    value: ${{ steps.setup.outputs.cache-hit }}
+
+runs:
+  using: 'composite'
+  steps:
+    - id: setup
+      uses: astral-sh/setup-uv@v8.2.0
+      with:
+        enable-cache: ${{ inputs.enable-cache }}
+
+branding:
+  icon: 'package'
+  color: 'black'

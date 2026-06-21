@@ -1,0 +1,13 @@
+name: 'Deploy to GitHub Pages'
+description: 'Deploy to GitHub Pages (forwarding proxy)'
+author: 'common-actions'
+
+runs:
+  using: 'composite'
+  steps:
+    - id: deploy
+      uses: actions/deploy-pages@v5.0.0
+
+branding:
+  icon: 'upload-cloud'
+  color: 'purple'

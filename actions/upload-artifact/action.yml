@@ -1,0 +1,29 @@
+name: 'Upload Artifact'
+description: 'Upload a build artifact (forwarding proxy)'
+author: 'common-actions'
+
+inputs:
+  name:
+    description: 'Artifact name'
+  path:
+    description: 'A file, directory or wildcard pattern that describes what to upload'
+    required: true
+  compression-level:
+    description: 'Compression level for artifact zip (0-9)'
+  retention-days:
+    description: 'Duration after which artifact will expire in days'
+
+runs:
+  using: 'composite'
+  steps:
+    - id: upload
+      uses: actions/upload-artifact@v7.0.1
+      with:
+        name: ${{ inputs.name }}
+        path: ${{ inputs.path }}
+        compression-level: ${{ inputs.compression-level }}
+        retention-days: ${{ inputs.retention-days }}
+
+branding:
+  icon: 'upload-cloud'
+  color: 'green'

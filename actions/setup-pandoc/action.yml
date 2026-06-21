@@ -1,0 +1,21 @@
+name: 'Setup pandoc'
+description: 'Setup pandoc and add it to your PATH (forwarding proxy)'
+author: 'common-actions'
+
+inputs:
+  pandoc-version:
+    description: "Pandoc version, e.g. '3.8.3', or 'latest', or 'nightly'."
+    required: true
+    default: '3.8.3'
+
+runs:
+  using: 'composite'
+  steps:
+    - id: setup
+      uses: r-lib/actions/setup-pandoc@v2
+      with:
+        pandoc-version: ${{ inputs.pandoc-version }}
+
+branding:
+  icon: 'book'
+  color: 'blue'

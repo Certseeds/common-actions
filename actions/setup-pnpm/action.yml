@@ -1,0 +1,32 @@
+name: 'Setup pnpm'
+description: 'Install pnpm package manager (forwarding proxy)'
+author: 'common-actions'
+
+inputs:
+  version:
+    description: 'Version of pnpm to install'
+    default: 10
+  run_install:
+    description: 'If specified, run `pnpm install`'
+    default: 'false'
+
+outputs:
+  dest:
+    description: 'Expanded path of inputs#dest'
+    value: ${{ steps.setup.outputs.dest }}
+  bin_dest:
+    description: "Location of `pnpm` and `pnpx` command"
+    value: ${{ steps.setup.outputs.bin_dest }}
+
+runs:
+  using: 'composite'
+  steps:
+    - id: setup
+      uses: pnpm/action-setup@v6.0.9
+      with:
+        version: ${{ inputs.version }}
+        run_install: ${{ inputs.run_install }}
+
+branding:
+  icon: 'package'
+  color: 'orange'

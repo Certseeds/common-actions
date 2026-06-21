@@ -1,0 +1,20 @@
+name: 'Upload Pages Artifact'
+description: 'Package and upload a static site for GitHub Pages deployment (forwarding proxy)'
+author: 'common-actions'
+
+inputs:
+  path:
+    description: 'Path of the directory containing the static assets.'
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - id: upload
+      uses: actions/upload-pages-artifact@v5.0.0
+      with:
+        path: ${{ inputs.path }}
+
+branding:
+  icon: 'upload-cloud'
+  color: 'purple'

@@ -1,0 +1,29 @@
+name: 'Build Go Binary'
+description: 'Build Go binaries with GoReleaser (forwarding proxy)'
+author: 'common-actions'
+
+inputs:
+  distribution:
+    description: 'GoReleaser distribution, either "goreleaser" or "goreleaser-pro"'
+    default: 'goreleaser'
+  version:
+    description: 'GoReleaser version'
+  args:
+    description: 'Arguments to pass to GoReleaser'
+  workdir:
+    description: 'Working directory'
+
+runs:
+  using: 'composite'
+  steps:
+    - id: build
+      uses: goreleaser/goreleaser-action@v7.2.2
+      with:
+        distribution: ${{ inputs.distribution }}
+        version: ${{ inputs.version }}
+        args: ${{ inputs.args }}
+        workdir: ${{ inputs.workdir }}
+
+branding:
+  icon: 'package'
+  color: 'blue'
