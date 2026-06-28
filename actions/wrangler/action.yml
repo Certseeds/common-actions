@@ -9,6 +9,8 @@ inputs:
     description: 'Cloudflare Account ID'
   command:
     description: 'Wrangler command to execute'
+  secrets:
+    description: 'Secrets to pass to wrangler (newline-separated names)'
 
 runs:
   using: 'composite'
@@ -19,6 +21,7 @@ runs:
         apiToken: ${{ inputs.apiToken }}
         accountId: ${{ inputs.accountId }}
         command: ${{ inputs.command }}
+        secrets: ${{ inputs.secrets }}
 
 branding:
   icon: 'upload-cloud'
